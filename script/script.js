@@ -6,7 +6,9 @@ import loginModal from "./modules/login.js";
 import toolTip from "./modules/tooltip.js";
 import dropDown from "./modules/dropdown.js";
 import menuMobile from "./modules/mobile.js";
-import animaNumeros from "./modules/animaNumeros.js";
+import hourTime from "./modules/funcionamento.js";
+import fetchAnimais from "./modules/fetch-animais.js";
+import fetchBitcoin from "./modules/fetch-bitcoin.js";
 
 smoothScroll();
 animaScroll();
@@ -16,4 +18,6 @@ loginModal();
 toolTip();
 dropDown();
 menuMobile();
-animaNumeros();
+hourTime();
+fetchAnimais();
+fetchBitcoin();

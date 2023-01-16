@@ -210,6 +210,27 @@ body.aumento-fonte {
   margin-right: 10px;
 }
 
+.contato li:last-child.aberto::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-left: 4px;
+  background-color: rgb(54, 221, 77);
+  border: 2px solid black;
+}
+.contato li:last-child.fechado::after {
+  background-color: rgb(211, 41, 41);
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-left: 4px;
+  border: 2px solid black;
+}
+
 /* copyright */
 
 .copy {
@@ -343,4 +364,11 @@ body.aumento-fonte {
 .js [data-anime="scroll"].ativo {
   opacity: 1;
   transform: translate3d(0px, 0, 0);
+}
+
+.btc-preco {
+  background-color: rgb(54, 221, 77);
+  padding: 0.2rem 0.5rem;
+  font-weight: bold;
+  border-radius: 2px;
 }

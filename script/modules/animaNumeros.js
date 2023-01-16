@@ -1,5 +1,5 @@
 export default function animaNumeros() {
-  const numeros = document.querySelectorAll("[data-numero]");
+  const numeros = document.querySelectorAll(".numeros-animal span");
 
   function numbersInit() {
     //basicamente pega o valor de dentro do number e substitui pelo proporcional do valor a cada 25ms
