@@ -3,16 +3,16 @@ export default function smoothScroll() {
     "[data-menu='nav'] a[href^='#']"
   );
 
-  if (linksInternos.length) {
-    function scrollToSection(e) {
-      e.preventDefault();
-      const href = e.currentTarget.getAttribute("href");
-      const link = document.querySelector(href);
-      link.scrollIntoView({
-        behavior: "smooth",
-      });
-    }
+  function scrollToSection(e) {
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute("href");
+    const link = document.querySelector(href);
+    link.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
 
+  if (linksInternos.length) {
     linksInternos.forEach((value) => {
       ["click", "touchstart"].forEach((evento) => {
         value.addEventListener(evento, scrollToSection);

@@ -1,18 +1,12 @@
 export default function toolTip() {
   const toolTips = document.querySelectorAll("[data-tooltip]");
 
-  toolTips.forEach((item) => {
-    item.addEventListener("mouseover", onMouseOver);
-  });
-
-  function onMouseOver(e) {
-    const toolTipBox = criarToolTipBox(this);
-    onMouseLeave.toolTipBox = toolTipBox;
-    onMouseMove.toolTipBox = toolTipBox;
-    onMouseLeave.element = this;
-    this.addEventListener("mouseleave", onMouseLeave);
-    this.addEventListener("mousemove", onMouseMove);
-  }
+  const onMouseMove = {
+    handleEvent(e) {
+      this.toolTipBox.style.top = `${e.pageY + 20}px`;
+      this.toolTipBox.style.left = `${e.pageX + 20}px`;
+    },
+  };
 
   const onMouseLeave = {
     handleEvent() {
@@ -22,19 +16,25 @@ export default function toolTip() {
     },
   };
 
-  const onMouseMove = {
-    handleEvent(e) {
-      this.toolTipBox.style.top = e.pageY + 20 + "px";
-      this.toolTipBox.style.left = e.pageX + 20 + "px";
-    },
-  };
-
   function criarToolTipBox(element) {
-    const toolTip = document.createElement("div");
+    const toolTipBox = document.createElement("div");
     const texto = element.getAttribute("aria-label");
-    toolTip.classList.add("tooltip");
-    toolTip.innerText = texto;
-    document.body.appendChild(toolTip);
-    return toolTip;
+    toolTipBox.classList.add("tooltip");
+    toolTipBox.innerText = texto;
+    document.body.appendChild(toolTipBox);
+    return toolTipBox;
   }
+
+  function onMouseOver() {
+    const toolTipBox = criarToolTipBox(this);
+    onMouseLeave.toolTipBox = toolTipBox;
+    onMouseMove.toolTipBox = toolTipBox;
+    onMouseLeave.element = this;
+    this.addEventListener("mouseleave", onMouseLeave);
+    this.addEventListener("mousemove", onMouseMove);
+  }
+
+  toolTips.forEach((item) => {
+    item.addEventListener("mouseover", onMouseOver);
+  });
 }
