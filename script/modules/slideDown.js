@@ -1,16 +1,23 @@
-export default function slideDown() {
-  const menuAcordeon = document.querySelectorAll("[data-menu='accordeon'] dt");
-  function activeAcordeon() {
-    this.classList.toggle("ativo");
-    this.nextElementSibling.classList.toggle("ativo");
+export default class slideDown {
+  constructor(links) {
+    this.menuAcordeon = document.querySelectorAll(links);
   }
 
-  if (menuAcordeon.length) {
-    menuAcordeon[0].classList.add("ativo");
-    menuAcordeon[0].nextElementSibling.classList.add("ativo");
+  activeAcordeon(item) {
+    item.classList.toggle("ativo");
+    item.nextElementSibling.classList.toggle("ativo");
+  }
 
-    menuAcordeon.forEach((value) => {
-      value.addEventListener("click", activeAcordeon);
+  addAcondeonEvent() {
+    this.menuAcordeon.forEach((value) => {
+      value.addEventListener("click", () => this.activeAcordeon(value));
     });
+  }
+
+  init() {
+    if (this.menuAcordeon.length) {
+      this.activeAcordeon(this.menuAcordeon[0]);
+      this.addAcondeonEvent();
+    }
   }
 }
