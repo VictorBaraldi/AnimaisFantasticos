@@ -1,4 +1,4 @@
-import smoothScroll from "./modules/smoothScroll.js";
+import SmoothScroll from "./modules/smoothScroll.js";
 import animaScroll from "./modules/animaScroll.js";
 import slideDown from "./modules/slideDown.js";
 import initTab from "./modules/initTab.js";
@@ -10,7 +10,9 @@ import hourTime from "./modules/funcionamento.js";
 import fetchAnimais from "./modules/fetch-animais.js";
 import fetchBitcoin from "./modules/fetch-bitcoin.js";
 
-smoothScroll();
+const smoothScroll = new SmoothScroll("[data-menu='nav'] a[href^='#']");
+smoothScroll.init();
+
 animaScroll();
 slideDown();
 initTab();
