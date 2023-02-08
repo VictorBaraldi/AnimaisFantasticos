@@ -3,7 +3,7 @@ import animaScroll from "./modules/animaScroll.js";
 import SlideDown from "./modules/slideDown.js";
 import InitTab from "./modules/initTab.js";
 import Login from "./modules/login.js";
-import toolTip from "./modules/tooltip.js";
+import ToolTip from "./modules/tooltip.js";
 import dropDown from "./modules/dropdown.js";
 import menuMobile from "./modules/mobile.js";
 import hourTime from "./modules/funcionamento.js";
@@ -26,11 +26,11 @@ const modal = new Login(
   '[data-modal="fechar"]'
 );
 modal.init();
-modal.addAtivoModal();
+
+const toolTip = new ToolTip("[data-tooltip]");
+toolTip.init();
 
 animaScroll();
-
-toolTip();
 dropDown();
 menuMobile();
 hourTime();
