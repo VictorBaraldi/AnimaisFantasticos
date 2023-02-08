@@ -2,7 +2,7 @@ import SmoothScroll from "./modules/smoothScroll.js";
 import animaScroll from "./modules/animaScroll.js";
 import SlideDown from "./modules/slideDown.js";
 import InitTab from "./modules/initTab.js";
-import loginModal from "./modules/login.js";
+import Login from "./modules/login.js";
 import toolTip from "./modules/tooltip.js";
 import dropDown from "./modules/dropdown.js";
 import menuMobile from "./modules/mobile.js";
@@ -20,8 +20,16 @@ const initTab = new InitTab(
 );
 initTab.init();
 
+const modal = new Login(
+  '[data-modal="container"]',
+  '[data-modal="abrir"]',
+  '[data-modal="fechar"]'
+);
+modal.init();
+modal.addAtivoModal();
+
 animaScroll();
-loginModal();
+
 toolTip();
 dropDown();
 menuMobile();
