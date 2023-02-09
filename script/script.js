@@ -1,5 +1,5 @@
 import SmoothScroll from "./modules/smoothScroll.js";
-import animaScroll from "./modules/animaScroll.js";
+import AnimaScroll from "./modules/animaScroll.js";
 import SlideDown from "./modules/slideDown.js";
 import InitTab from "./modules/initTab.js";
 import Login from "./modules/login.js";
@@ -30,9 +30,13 @@ modal.init();
 const toolTip = new ToolTip("[data-tooltip]");
 toolTip.init();
 
-animaScroll();
+fetchBitcoin("https://blockchain.info/ticker", ".btc-preco");
+
+fetchAnimais("../../animaisapi.json", ".numeros-grid");
+
+const animaScroll = new AnimaScroll("[data-anime='scroll']");
+animaScroll.init();
+
 dropDown();
 menuMobile();
 hourTime();
-fetchAnimais();
-fetchBitcoin();
