@@ -1,9 +1,11 @@
 import outsideClick from "./outsideClick.js";
 
-export default function dropDown() {
-  const dropDownMenu = document.querySelectorAll("[data-dropdown]");
+export default class DropDown {
+  constructor(selector) {
+    this.dropDownMenu = document.querySelectorAll(selector);
+  }
 
-  function dropMenu(e) {
+  dropMenu(e) {
     e.preventDefault();
     this.classList.toggle("ativo");
     outsideClick(this, ["touchstart", "click"], () => {
@@ -11,9 +13,14 @@ export default function dropDown() {
     });
   }
 
-  dropDownMenu.forEach((value) => {
-    ["touchstart", "click"].forEach((evento) => {
-      value.addEventListener(evento, dropMenu);
-    });
-  });
+  init() {
+    if (this.dropDownMenu.length) {
+      this.dropDownMenu.forEach((value) => {
+        ["touchstart", "click"].forEach((evento) => {
+          value.addEventListener(evento, this.dropMenu);
+        });
+      });
+    }
+    return this;
+  }
 }

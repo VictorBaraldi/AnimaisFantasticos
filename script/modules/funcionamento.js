@@ -1,17 +1,37 @@
-export default function hourTime() {
-  const funcionamento = document.querySelector("[data-semana]");
-  const diasSemana = funcionamento.dataset.semana.split(",").map(Number);
-  const horaSemana = funcionamento.dataset.horario.split(",").map(Number);
-  const dataAgora = new Date();
-  const diaAgora = dataAgora.getDay();
-  const horaAgora = dataAgora.getHours();
+export default class hourTime {
+  constructor(funcionamento) {
+    this.funcionamento = document.querySelector(funcionamento);
+  }
 
-  const semanaAberto = diasSemana.indexOf(diaAgora) !== -1;
-  const horaAberto = horaSemana[0] <= horaAgora && horaAgora < horaSemana[1];
+  init() {
+    if (this.funcionamento) {
+      this.HoraFuncionamento();
+      this.horaAtual();
+      this.addClass();
+    }
+    return this;
+  }
 
-  if (semanaAberto && horaAberto) {
-    funcionamento.classList.add("aberto");
-  } else {
-    funcionamento.classList.add("fechado");
+  addClass() {
+    if (this.semanaAberto && this.horaAberto) {
+      this.funcionamento.classList.add("aberto");
+    } else {
+      this.funcionamento.classList.add("fechado");
+    }
+  }
+
+  horaAtual() {
+    this.dataAgora = new Date();
+    this.diaAgora = this.dataAgora.getDay();
+    this.horaAgora = this.dataAgora.getUTCHours() - 3;
+    this.semanaAberto = this.diasSemana.indexOf(this.diaAgora) !== -1;
+    this.horaAberto =
+      this.horaSemana[0] <= this.horaAgora &&
+      this.horaAgora < this.horaSemana[1];
+  }
+
+  HoraFuncionamento() {
+    this.diasSemana = this.funcionamento.dataset.semana.split(",").map(Number);
+    this.horaSemana = this.funcionamento.dataset.horario.split(",").map(Number);
   }
 }

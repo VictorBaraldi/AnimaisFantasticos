@@ -4,9 +4,9 @@ import SlideDown from "./modules/slideDown.js";
 import InitTab from "./modules/initTab.js";
 import Login from "./modules/login.js";
 import ToolTip from "./modules/tooltip.js";
-import dropDown from "./modules/dropdown.js";
-import menuMobile from "./modules/mobile.js";
-import hourTime from "./modules/funcionamento.js";
+import DropDown from "./modules/dropdown.js";
+import MenuMobile from "./modules/mobile.js";
+import HourTime from "./modules/funcionamento.js";
 import fetchAnimais from "./modules/fetch-animais.js";
 import fetchBitcoin from "./modules/fetch-bitcoin.js";
 
@@ -32,11 +32,19 @@ toolTip.init();
 
 fetchBitcoin("https://blockchain.info/ticker", ".btc-preco");
 
-fetchAnimais(".numeros-grid");
+fetchAnimais("../animaisapi.json", ".numeros-grid");
 
 const animaScroll = new AnimaScroll("[data-anime='scroll']");
 animaScroll.init();
 
-dropDown();
-menuMobile();
-hourTime();
+const dropDown = new DropDown("[data-dropdown]");
+dropDown.init();
+
+const menuMobile = new MenuMobile(
+  '[data-menu= "button"]',
+  '[data-menu="list"]'
+);
+menuMobile.init();
+
+const funcionamento = new HourTime("[data-semana]");
+funcionamento.init();
