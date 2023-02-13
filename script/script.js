@@ -9,6 +9,7 @@ import MenuMobile from "./modules/mobile.js";
 import HourTime from "./modules/funcionamento.js";
 import fetchAnimais from "./modules/fetch-animais.js";
 import fetchBitcoin from "./modules/fetch-bitcoin.js";
+import SlideNav from "./modules/slideNav.js";
 
 const smoothScroll = new SmoothScroll("[data-menu='nav'] a[href^='#']");
 smoothScroll.init();
@@ -40,11 +41,12 @@ animaScroll.init();
 const dropDown = new DropDown("[data-dropdown]");
 dropDown.init();
 
-const menuMobile = new MenuMobile(
-  '[data-menu= "button"]',
-  '[data-menu="list"]'
-);
+const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]');
 menuMobile.init();
 
 const funcionamento = new HourTime("[data-semana]");
 funcionamento.init();
+
+const slide = new SlideNav(".slide", ".wrapper");
+slide.init();
+slide.addControl(".custom-control");
