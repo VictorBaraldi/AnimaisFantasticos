@@ -18,7 +18,8 @@
 .modal {
   background-color: white;
   padding: 40px;
-  min-width: 400px;
+  width: 80vw;
+  max-width: 600px;
   border: 10px solid #fb5;
   box-shadow: 0 0 0 10px white;
   position: relative;
@@ -47,10 +48,9 @@
   top: -30px;
   border-radius: 50%;
   right: -30px;
+  background: #fb5 url(../img/fechar.svg) no-repeat center center;
   position: absolute;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
-  font-size: 1.2rem;
-  font-family: "IBM Plex Mono", monospace;
   cursor: pointer;
 }
 
@@ -64,6 +64,7 @@
 .modal input {
   width: 100%;
   padding: 0.7rem 0.5rem;
+  border: 2px solid #222;
 }
 
 .modal button[type="submit"] {
